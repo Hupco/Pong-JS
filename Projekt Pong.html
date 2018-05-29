@@ -1,0 +1,93 @@
+<!Doctype html!>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<title>Pong JS</title>
+</head>
+<body>
+<style>
+	body{
+		margin:0;
+		padding:0;
+		display:flex;
+		align-items:center;
+		justify-content:center ;
+		height:100vh;
+		background-color: darkgray
+	
+	
+	}
+	
+
+	canvas{
+		
+		border: solid 2px white;
+	
+	}
+
+	
+
+
+</style>
+
+<canvas></canvas>
+<script>
+	const canvas = document.querySelector('canvas');
+	const ctx = canvas.getContext('2d');
+	//rozmaiaryry pola
+	canvas.width = 1000;
+	canvas.height = 500;
+	
+	const canszer = canvas.width;
+	const canwys = canvas.height; 
+	const ballS=20;//srednica pilki(wysokosc , szerokosc);
+	//Polozenie startowe
+	let bX = canszer/2-ballS/2;
+	let bY = canwys/2-ballS/2;
+	//rozmiar paleczki pierwszej
+	const paleczkaWys = 100;
+	const paleczkaSzer = 20;
+	//polozenie paleczek (na osi x)
+	const graczX = 70;
+	const botX= 910; 
+	//polozenie paleczek (na osi y)
+	const graczY = 200;
+	const botY= 200; 
+	
+	function gracz(){
+	ctx.fillStyle="red";
+	ctx.fillRect(graczX,graczY,paleczkaSzer,paleczkaWys);
+
+	}
+	function bot(){
+	ctx.fillStyle='#0000ff';
+	ctx.fillRect(botX,botY,paleczkaSzer,paleczkaWys);
+
+	}
+	
+	
+	function ball(){
+	ctx.fillStyle="white";
+	ctx.fillRect(bX,bY,ballS-10,ballS-10);
+
+	}
+	
+	function table(){
+		//Stół
+		ctx.fillStyle = 'black';; //zmiana koloru
+		ctx.fillRect(0,0,canszer,canwys);  // wypełneinie przestrzenią (x0,y0,xk,yk)
+		//Kreski
+		
+		
+	}
+	
+	table();
+	ball();
+	gracz();
+	bot();
+	
+	</script>
+
+</body>
+</html>
+
