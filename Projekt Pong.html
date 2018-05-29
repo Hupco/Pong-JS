@@ -134,7 +134,7 @@ Your browser does not support the audio element.
 		punch.play();
 		ballVX=-ballVX;
 		acceleration()
-		}else if(bX<=0){
+		}else if(bX<graczX){
 				pkr+=1;
 				punkty.innerText=pkl+"||"+pkr;
 				bX=canszer/2-ballS/2;
@@ -142,7 +142,7 @@ Your browser does not support the audio element.
 				ballVX=1;
 				ballVY=1;
 				
-				}else if(bX +ballS>=canszer){
+				}else if(bX +ballS>botX){
 						pkl+=1;
 						punkty.innerText=pkl+"||"+pkr;
 						bX=canszer/2-ballS/2;
