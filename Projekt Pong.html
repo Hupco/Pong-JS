@@ -44,15 +44,21 @@
 	//Polozenie startowe
 	let bX = canszer/2-ballS/2;
 	let bY = canwys/2-ballS/2;
-	//rozmiar paleczki pierwszej
+	//rozmiar paleczki 
 	const paleczkaWys = 100;
 	const paleczkaSzer = 20;
 	//polozenie paleczek (na osi x)
 	const graczX = 70;
 	const botX= 910; 
 	//polozenie paleczek (na osi y)
-	const graczY = 200;
-	const botY= 200; 
+	let graczY = 200;
+	let botY= 200; 
+	//rozmiar kresek podzialu
+	const kreskiWidth = 6;
+	const kreskiHeight = 16;
+	
+	let ballVX = -1;
+	let ballVY = 1;
 	
 	function gracz(){
 	ctx.fillStyle="red";
@@ -68,23 +74,68 @@
 	
 	function ball(){
 	ctx.fillStyle="white";
-	ctx.fillRect(bX,bY,ballS-10,ballS-10);
+	ctx.fillRect(bX,bY,ballS,ballS);
+	
+	
+	bX+=ballVX;
+	bY+=ballVY;
+	
+		if(bY<=0 || bY +ballS>=canwys){
+		ballVY=-ballVY;
+		}
+		
+		if(bX<=0 || bX +ballS>=canszer){
+		ballVX=-ballVX;
+		}
 
 	}
 	
 	function table(){
 		//Stół
-		ctx.fillStyle = 'black';; //zmiana koloru
+		ctx.fillStyle = 'black'; //zmiana koloru
 		ctx.fillRect(0,0,canszer,canwys);  // wypełneinie przestrzenią (x0,y0,xk,yk)
-		//Kreski
 		
+	
+		for(let lp = 20;lp<canwys;lp+=30){ //kreski podzialu (lp-pozycja lini)
+		ctx.fillStyle = "gray";
+		ctx.fillRect(canszer/2-kreskiWidth/2,lp,kreskiWidth,kreskiHeight);
+	
+		}
+	
 		
 	}
 	
-	table();
-	ball();
-	gracz();
-	bot();
+	topCanvas= canvas.offsetTop;
+	console.log(topCanvas)
+	
+	function pozycjaGracza(p){
+	//console.log("pozycja myszy"+(p.clientY-topCanvas)+"||"+(p.clientY))
+	graczY = p.clientY-topCanvas -paleczkaWys/2;
+	
+	//ograniczenia
+	if(graczY>=canwys-paleczkaWys){
+		graczY=canwys -paleczkaWys;
+		}
+	if(graczY<=0){
+		graczY=0;
+		}
+
+	
+	
+	}
+	
+	//nasluchiwanie zdarzenia (ruchu myszką)
+	canvas.addEventListener("mousemove",pozycjaGracza)
+	
+	function rysuj(){
+	table(); //zamalowywuje  na czrno
+	ball(); //tworzy pilke
+	gracz();//gracza
+	bot();// i bota
+	
+	
+	}
+	setInterval(rysuj,1000/60) //60 klatek na sekunde
 	
 	</script>
 
