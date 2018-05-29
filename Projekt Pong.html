@@ -6,11 +6,19 @@
 </head>
 <body>
 <style>
+
+	html { 
+	background: url(mortal.jpg) no-repeat center center fixed; 
+	webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	}
 	body{
 		margin:0;
 		padding:0;
 		height:100vh;
-		background-color: darkgray
+		
 	
 	
 	}
@@ -23,20 +31,39 @@
 	
 	}
 
-	h1,h2,h3{
+	h1,h2{
 	text-align:center;
 	display:block;
 	margin: auto;
+	color:blue;
+	text-shadow: 2px 2px white;
 	}
 
+	h2{
+	color:red;
+	text-shadow: 2px 2px white;
+	font-size:40px;
+	}
 
 </style>
 <h1>Pong dla 2 graczy</h1>
 <h1>Liczba punktów</h1>
 <h2 id="pkt">0||0</h2>
 <canvas></canvas>
+<center>
+<audio id="audio" autoplay controls loop>
+  <source src="The Immortals Techno Syndrome.mp3" type="audio/mpeg">
+Your browser does not support the audio element.
+</audio>
+</center>
 <script>
-
+	//The Immortals Techno Syndrome
+	//audio
+	var punch = new Audio();
+	punch.src = "PUNCH.mp3"
+	
+	
+	
 	//punkty
 	let pkl = 0;
 	let pkr = 0;
@@ -71,7 +98,12 @@
 	let ballVY = Math.floor(Math.random() * 2 -1);
 	if(ballVX==0){ballVX+=1;}
 	if(ballVY==0){ballVY+=1;}
-	
+	/*
+	 function playAudio(){
+	mkx.play();
+	}
+	playAudio();
+	*/
 	function gracz(){
 	ctx.fillStyle="red";
 	ctx.fillRect(graczX,graczY,paleczkaSzer,paleczkaWys);
@@ -99,7 +131,7 @@
 		}
 		//odbicie od paletek
 		if((bX<=90 && bY>=graczY && bY<=graczY+paleczkaWys)  || (bX +ballS>=canszer-90 && bY>=botY && bY<=botY+paleczkaWys)){
-		
+		punch.play();
 		ballVX=-ballVX;
 		acceleration()
 		}else if(bX<=0){
@@ -177,17 +209,17 @@
 	
 	function acceleration(){
 		//console.log("przyspiesza" + "||"+Math.abs(ballVX))
-		if(ballVX > 0 && ballVX <2){
-		ballVX +=1;
+		if(ballVX > 0 && ballVX <8){
+		ballVX +=0.4;
 		}
-		else if(ballVX < 0 && ballVX >-2){
-			ballVX -=1;
+		else if(ballVX < 0 && ballVX >-8){
+			ballVX -=0.4;
 			}
-		if(ballVY > 0 && ballVY <2){
-		ballVY +=1;
+		if(ballVY > 0 && ballVY <8){
+		ballVY +=0.4;
 		}
-		else if(ballVY < 0 && ballVY >-2){
-			ballVY -=1;
+		else if(ballVY < 0 && ballVY >-8){
+			ballVY -=0.4;
 			}
 		
 		
