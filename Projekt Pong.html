@@ -57,7 +57,7 @@ Your browser does not support the audio element.
 </audio>
 </center>
 <script>
-	//The Immortals Techno Syndrome
+	//"The Immortals Techno Syndrome "
 	//audio
 	var punch = new Audio();
 	punch.src = "PUNCH.mp3"
@@ -68,13 +68,13 @@ Your browser does not support the audio element.
 	let pkl = 0;
 	let pkr = 0;
 	let punkty=document.getElementById("pkt")
-	
+	//stawianiae canvasa
 	const canvas = document.querySelector('canvas');
 	const ctx = canvas.getContext('2d');
 	//rozmaiaryry pola
 	canvas.width = 1000;
 	canvas.height = 500;
-	
+	//dopisywanie rozmiaru
 	const canszer = canvas.width;
 	const canwys = canvas.height; 
 	const ballS=20;//srednica pilki(wysokosc , szerokosc);
@@ -93,17 +93,12 @@ Your browser does not support the audio element.
 	//rozmiar kresek podzialu
 	const kreskiWidth = 6;
 	const kreskiHeight = 16;
-	
+	//Startowy kierunek piłki przez ustalenie początkowej predkosci
 	let ballVX = Math.floor(Math.random() * 2 -1);
 	let ballVY = Math.floor(Math.random() * 2 -1);
 	if(ballVX==0){ballVX+=1;}
 	if(ballVY==0){ballVY+=1;}
-	/*
-	 function playAudio(){
-	mkx.play();
-	}
-	playAudio();
-	*/
+	
 	function gracz(){
 	ctx.fillStyle="red";
 	ctx.fillRect(graczX,graczY,paleczkaSzer,paleczkaWys); //rysowanie lewej paletki
@@ -124,7 +119,7 @@ Your browser does not support the audio element.
 	bX+=ballVX;
 	bY+=ballVY;
 	
-		//odbicie gora i dol
+		//odbicie gora i dol canvasa 
 		if(bY<=0 || bY +ballS>=canwys){
 		ballVY=-ballVY;
 		acceleration() //wywoalenie funkcji dodającej predkosc
@@ -134,17 +129,17 @@ Your browser does not support the audio element.
 		punch.play(); //wywoalenie efektu dzwiekowego
 		ballVX=-ballVX; //zmaina kierunku ruchu po odbicu
 		acceleration()
-		}else if(bX<graczX){ //warunek  zdobycai punktu gracza po lewej stronie
+		}else if(bX<graczX){ //warunek  zdobycia punktu gracza po lewej stronie
 				pkr+=1;
-				punkty.innerText=pkl+"||"+pkr;
+				punkty.innerText=pkl+"||"+pkr; //rysowanie licznika i ponowne ustawienie pilki na start(środek canvasa)
 				bX=canszer/2-ballS/2;
 				bY=canwys/2-ballS/2;
 				ballVX=1;
 				ballVY=1;
 				
-				}else if(bX +ballS>botX){//warunek  zdobycai punktu gracza po prawej stronie
+				}else if(bX +ballS>botX){//warunek  zdobycia punktu gracza po prawej stronie
 						pkl+=1;
-						punkty.innerText=pkl+"||"+pkr;
+						punkty.innerText=pkl+"||"+pkr;//rysowanie licznika i ponowne ustawienie pilki na start(środek canvasa)
 						bX=canszer/2-ballS/2;
 						bY=canwys/2-ballS/2;
 						ballVX=1;
@@ -158,8 +153,8 @@ Your browser does not support the audio element.
 		ctx.fillStyle = 'black'; //zmiana koloru
 		ctx.fillRect(0,0,canszer,canwys);  // wypełneinie przestrzenią (x0,y0,xk,yk)
 		
-	
-		for(let lp = 20;lp<canwys;lp+=30){ //kreski podzialu (lp-pozycja lini)
+		//kreski podzialu (lp-pozycja lini)
+		for(let lp = 20;lp<canwys;lp+=30){ 
 		ctx.fillStyle = "gray";
 		ctx.fillRect(canszer/2-kreskiWidth/2,lp,kreskiWidth,kreskiHeight);
 	
@@ -169,23 +164,23 @@ Your browser does not support the audio element.
 	}
 	
 	topCanvas= canvas.offsetTop; //odleglosc canvasa od gory strony
-	console.log(topCanvas)
+	//console.log(topCanvas)
 	
 	function pozycjaGracza(p){
-	console.log(p.keyCode);
+	//console.log(p.keyCode);
 	
 		switch(p.keyCode){
 		
 		case 87: if(graczY<=0){ //klikniecie klawisza W
 			graczY=0;
 				
-		}else graczY-=25
+		}else graczY-=25 //zmina polozenia o 25
 		break;
 	
 		case 83: if(graczY>=canwys-paleczkaWys){ //klikniecie klawisza S
 			graczY=canwys -paleczkaWys;
 				
-		}else graczY+=25
+		}else graczY+=25 //zmina polozenia o 25
 		break;
 		}
 	
@@ -193,7 +188,7 @@ Your browser does not support the audio element.
 	
 	
 	/*
-	
+	//Wersja z myszką
 	//console.log("pozycja myszy"+(p.clientY-topCanvas)+"||"+(p.clientY))
 	graczY = p.clientY-topCanvas -paleczkaWys/2;
 	
@@ -211,7 +206,7 @@ Your browser does not support the audio element.
 	//2 gracz
 	
 	function pozycjaBota(e){
-	console.log(e.keyCode);
+	//console.log(e.keyCode);
 	
 		switch(e.keyCode){
 		
@@ -232,8 +227,8 @@ Your browser does not support the audio element.
 	
 	function acceleration(){
 		//console.log("przyspiesza" + "||"+Math.abs(ballVX)) //sprawdzanie przysp
-		if(ballVX > 0 && ballVX <6){ 
-		ballVX +=0.4;
+		if(ballVX > 0 && ballVX <6){  //maxymalne przyspieszenie 6
+		ballVX +=0.4; //przyspieszenie co krok 0.4
 		}
 		else if(ballVX < 0 && ballVX >-6){
 			ballVX -=0.4;
@@ -252,6 +247,7 @@ Your browser does not support the audio element.
 	
 	
 	/*
+	//dla myszki
 	//nasluchiwanie zdarzenia (ruchu myszką)
 	canvas.addEventListener("mousemove",pozycjaGracza)
 	
@@ -262,10 +258,11 @@ Your browser does not support the audio element.
 	window.addEventListener("keydown",pozycjaBota)
 	window.addEventListener("keydown",pozycjaGracza)
 	function rysuj(){
-	table(); //zamalowywuje  na czrno
+	table(); //zamalowywuje  na czarno
 	ball(); //tworzy pilke
 	gracz();//gracza
 	bot();// i bota
+	//dla myszki
 	//pozycjaBota();
 	
 	}
