@@ -75,16 +75,21 @@
 				punkty.innerText=pkl+"||"+pkr; //rysowanie licznika i ponowne ustawienie pilki na start(środek canvasa)
 				bX=canszer/2-ballS/2;
 				bY=canwys/2-ballS/2;
-				ballVX=1;
-				ballVY=1;
+				ballVX = Math.floor(Math.random() * 2 -1);
+	            ballVY = Math.floor(Math.random() * 2 -1);
+	            if(ballVX==0){ballVX+=1;}
+	            if(ballVY==0){ballVY+=1;}
 				
 				}else if(bX +ballS>botX){//warunek  zdobycia punktu gracza po prawej stronie
 						pkl+=1;
 						punkty.innerText=pkl+"||"+pkr;//rysowanie licznika i ponowne ustawienie pilki na start(środek canvasa)
 						bX=canszer/2-ballS/2;
 						bY=canwys/2-ballS/2;
-						ballVX=1;
-						ballVY=1;
+						ballVX = Math.floor(Math.random() * 2 -1);
+	                    ballVY = Math.floor(Math.random() * 2 -1);
+	                    if(ballVX==0){ballVX+=1;}
+	                    if(ballVY==0){ballVY+=1;}
+						
 						}
 
 	}
