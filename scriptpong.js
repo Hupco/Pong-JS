@@ -1,6 +1,6 @@
 	//"The Immortals Techno Syndrome "
 	//audio
-	var punch = new Audio();
+	const punch = new Audio();
 	punch.src = "PUNCH.mp3"
 	
 	
