@@ -39,27 +39,20 @@
 	let ballVY = Math.floor(Math.random() * 2 -1);
 	if(ballVX==0){ballVX+=1;}
 	if(ballVY==0){ballVY+=1;}
-	
 	function gracz(){
 	ctx.fillStyle="red";
 	ctx.fillRect(graczX,graczY,paleczkaSzer,paleczkaWys); //rysowanie lewej paletki
-
 	}
 	function bot(){
 	ctx.fillStyle='#0000ff';
 	ctx.fillRect(botX,botY,paleczkaSzer,paleczkaWys); //rysowanie prawej paletki
-
 	}
-	
-	
 	function ball(){ //rysowanie pilki
 	ctx.fillStyle="white";
 	ctx.fillRect(bX,bY,ballS,ballS);
-	
-	//dodawanie predkosci po odbiciach
-	bX+=ballVX;
-	bY+=ballVY;
-	
+		//dodawanie predkosci po odbiciach
+		bX+=ballVX;
+		bY+=ballVY;
 		//odbicie gora i dol canvasa 
 		if(bY<=0 || bY +ballS>=canwys){
 		ballVY=-ballVY;
@@ -70,7 +63,7 @@
 		punch.play(); //wywoalenie efektu dzwiekowego
 		ballVX=-ballVX; //zmaina kierunku ruchu po odbicu
 		acceleration()
-		}else if(bX<graczX){ //warunek  zdobycia punktu gracza po lewej stronie
+		}else if(bX<graczX+paleczkaSzer){ //warunek  zdobycia punktu gracza po lewej stronie
 				pkr+=1;
 				punkty.innerText=pkl+"||"+pkr; //rysowanie licznika i ponowne ustawienie pilki na start(środek canvasa)
 				bX=canszer/2-ballS/2;
@@ -79,7 +72,6 @@
 	            ballVY = Math.floor(Math.random() * 2 -1);
 	            if(ballVX==0){ballVX+=1;}
 	            if(ballVY==0){ballVY+=1;}
-				
 				}else if(bX +ballS>botX){//warunek  zdobycia punktu gracza po prawej stronie
 						pkl+=1;
 						punkty.innerText=pkl+"||"+pkr;//rysowanie licznika i ponowne ustawienie pilki na start(środek canvasa)
@@ -89,50 +81,32 @@
 	                    ballVY = Math.floor(Math.random() * 2 -1);
 	                    if(ballVX==0){ballVX+=1;}
 	                    if(ballVY==0){ballVY+=1;}
-						
 						}
-
 	}
-	
 	function table(){
 		//Stół
 		ctx.fillStyle = 'black'; //zmiana koloru
 		ctx.fillRect(0,0,canszer,canwys);  // wypełneinie przestrzenią (x0,y0,xk,yk)
-		
 		//kreski podzialu (lp-pozycja lini)
 		for(let lp = 20;lp<canwys;lp+=30){ 
 		ctx.fillStyle = "gray";
 		ctx.fillRect(canszer/2-kreskiWidth/2,lp,kreskiWidth,kreskiHeight);
-	
 		}
-	
-		
 	}
-	
 	topCanvas= canvas.offsetTop; //odleglosc canvasa od gory strony
 	//console.log(topCanvas)
-	
 	function pozycjaGracza(p){
 	//console.log(p.keyCode);
-	
 		switch(p.keyCode){
-		
 		case 87: if(graczY<=0){ //klikniecie klawisza W
-			graczY=0;
-				
+			graczY=0;		
 		}else graczY-=25 //zmina polozenia o 25
-		break;
-	
+			break;
 		case 83: if(graczY>=canwys-paleczkaWys){ //klikniecie klawisza S
-			graczY=canwys -paleczkaWys;
-				
+			graczY=canwys -paleczkaWys;	
 		}else graczY+=25 //zmina polozenia o 25
-		break;
+			break;
 		}
-	
-	
-	
-	
 	/*
 	//Wersja z myszką
 	//console.log("pozycja myszy"+(p.clientY-topCanvas)+"||"+(p.clientY))
@@ -150,27 +124,20 @@
 	*/
 	}
 	//2 gracz
-	
 	function pozycjaBota(e){
 	//console.log(e.keyCode);
-	
 		switch(e.keyCode){
-		
 		case 38: if(botY<=0){ // klikniecie strzalki w gore
 			botY=0;
 		}else botY-=25
-		break;
-	
+			break;
 		case 40: if(botY>=canwys-paleczkaWys){ // klikniecie strzalki w dół
 					botY=canwys -paleczkaWys;
 		}else botY+=25
-		break;
+			break;
 		}
-	
-	
 	}
 	//Funkcja  dodając przsypieszenie przy odbiciach
-	
 	function acceleration(){
 		//console.log("przyspiesza" + "||"+Math.abs(ballVX)) //sprawdzanie przysp
 		if(ballVX > 0 && ballVX <6){  //maxymalne przyspieszenie 6
@@ -185,21 +152,12 @@
 		else if(ballVY < 0 && ballVY >-6){
 			ballVY -=0.4;
 			}
-		
-		
 	}
-	
-	
-	
-	
 	/*
 	//dla myszki
 	//nasluchiwanie zdarzenia (ruchu myszką)
 	canvas.addEventListener("mousemove",pozycjaGracza)
-	
 	*/
-	
-	
 	//ruch klawiszami
 	window.addEventListener("keydown",pozycjaBota)
 	window.addEventListener("keydown",pozycjaGracza)
@@ -210,7 +168,6 @@
 	bot();// i bota
 	//dla myszki
 	//pozycjaBota();
-	
 	}
 	setInterval(rysuj,1000/60) //60 klatek na sekunde
 	
