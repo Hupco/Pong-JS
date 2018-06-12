@@ -82,6 +82,7 @@
 	                    if(ballVX==0){ballVX+=1;}
 	                    if(ballVY==0){ballVY+=1;}
 						}
+						przegrana();
 	}
 	function table(){
 		//Stół
@@ -153,6 +154,23 @@
 			ballVY -=0.4;
 			}
 	}
+	//warunki przegranej/wygranej
+	function przegrana(){
+		if(pkr==1){
+		alert("Gracz z prawej wygrał! Kliknij aby zacząć od nowa");
+		pkr=0;
+		graczY = 200;
+		botY= 200; 
+		
+		}
+		if(pkl==1){
+		alert("Gracz z lewej wygrał! Kliknij aby zacząć od nowa");
+		pkl=0;
+		graczY = 200;
+		botY= 200; 
+		}
+	}
+	
 	/*
 	//dla myszki
 	//nasluchiwanie zdarzenia (ruchu myszką)
