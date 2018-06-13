@@ -59,7 +59,7 @@
 		acceleration() //wywoalenie funkcji dodającej predkosc
 		}
 		//odbicie od paletek
-		if((bX<=90 && bY>=graczY && bY<=graczY+paleczkaWys)  || (bX +ballS>=canszer-90 && bY>=botY && bY<=botY+paleczkaWys)){  //warunki odbic
+		if((bX<=90 && bY+ballS>=graczY && bY<=graczY+paleczkaWys)  || (bX +ballS>=canszer-90 && bY+ballS>=botY && bY<=botY+paleczkaWys)){  //warunki odbic
 		punch.play(); //wywoalenie efektu dzwiekowego
 		ballVX=-ballVX; //zmaina kierunku ruchu po odbicu
 		acceleration()
