@@ -104,28 +104,28 @@ $(document.body).keydown(function (evt) {
     var li = pressedKeys[evt.keyCode];
     if (!li) {
         pressedKeys[evt.keyCode] = li;
-		console.log(evt.keyCode);
+		//console.log(evt.keyCode);
 		}
 		switch(evt.keyCode){
 		case 87: if(graczY<=0){ //klikniecie klawisza W
 			graczY=0;
 			graczVY=0;		
-		}else graczVY-=25 //zmina polozenia o 25
+		}else graczVY=-paleczkaWys/5 //zmina polozenia o 25
 			break;
 		case 83: if(graczY>=canwys-paleczkaWys){ //klikniecie klawisza S
-			graczY=canwys -paleczkaWys;	
+			graczY=canwys - paleczkaWys;	
 			graczVY=0;
-		}else graczVY+=25 //zmina polozenia o 25
+		}else graczVY=paleczkaWys/5 //zmina polozenia o 25
 			break;
 		case 38: if(botY<=0){ // klikniecie strzalki w gore
 			botY=0;
 			botVY=0;
-		}else botVY-=25
+		}else botVY=-paleczkaWys/5
 			break;
 		case 40: if(botY>=canwys-paleczkaWys){ // klikniecie strzalki w dół
-				botY=canwys -paleczkaWys;
+				botY=canwys - paleczkaWys;
 				botVY=0;
-		}else botVY+=25
+		}else botVY=paleczkaWys/5
 			break;
 		}
     
@@ -135,7 +135,7 @@ $(document.body).keyup(function (evt) {
     var li = pressedKeys[evt.keyCode];
     if (!li) {
         pressedKeys[evt.keyCode] = li;
-		console.log(evt.keyCode);
+		//console.log(evt.keyCode);
 		}
 		switch(evt.keyCode){
 		case 87: if(graczY<=0){ //klikniecie klawisza W
