@@ -82,7 +82,7 @@
 	                    if(ballVX==0){ballVX+=1;}
 	                    if(ballVY==0){ballVY+=1;}
 						}
-						przegrana();
+						przegrana();//wywoałeni funkcji sprwadzajacej czy gracz przegrał
 	}
 	function table(){
 		//Stół
@@ -156,29 +156,31 @@
 	}
 	//warunki przegranej/wygranej
 	function przegrana(){
-		if(pkr==10){
-		pkl=0;
-		pkr=0;
-		if (confirm("Gracz z prawej wygrał! \nKliknij OK aby zacząć od nowa\nKliknij ANULUJ aby wrócić na stronę startową ")){
-			graczY = 200;
-			botY= 200; 
+		if(pkr==10){ //warunek maksymalnej liczby punktów
+		pkl=0;//zerowanie wyniku
+		pkr=0;//zerowanie wyniku
+		//wyswietlanie okna dialogowego
+		if (confirm("Gracz z prawej wygrał! \nKliknij OK aby zacząć od nowa\nKliknij Anuluj aby wrócić na stronę startową ")){
+			graczY = 200;//ustawaianie startowej pozycji pałeczek
+			botY= 200; //ustawaianie startowej pozycji pałeczek
 			} else {
-				location.href="start.html";
+				location.href="start.html"; //przekierowanie na strone startową
 				}
-			graczY = 200;
-			botY= 200; 	
+			graczY = 200;//ustawaianie startowej pozycji pałeczek
+			botY= 200; 	//ustawaianie startowej pozycji pałeczek
 		}
-		if(pkl==10){
-		pkl=0;
-		pkr=0;
-		if (confirm("Gracz z lewej wygrał! \nKliknij OK aby zacząć od nowa\nKliknij ANULUJ aby wrócić na stronę startową")){
-			graczY = 200;
-			botY= 200; 
+		if(pkl==10){ //warunek maksymalnej liczby punktów
+		pkl=0;//zerowanie wyniku
+		pkr=0;//zerowanie wyniku
+		//wyswietlanie okna dialogowego
+		if (confirm("Gracz z lewej wygrał! \nKliknij OK aby zacząć od nowa\nKliknij Anuluj aby wrócić na stronę startową")){
+			graczY = 200;//ustawaianie startowej pozycji pałeczek
+			botY= 200; //ustawaianie startowej pozycji pałeczek
 			} else {
-				location.href="start.html";
+				location.href="start.html"; //przekierwoanie na strone startową
 			}
 		}
-		punkty.innerText=pkl+"||"+pkr;
+		punkty.innerText=pkl+"||"+pkr; //zerowanie licznika  na stronie
 	}
 	
 	/*
