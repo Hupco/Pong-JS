@@ -110,22 +110,22 @@ $(document.body).keydown(function (evt) {
 		case 87: if(graczY<=0){ //klikniecie klawisza W
 			graczY=0;
 			graczVY=0;		
-		}else graczVY=-paleczkaWys/5 //zmina polozenia o 25
+		}else graczVY=-paleczkaWys/10 //zmina polozenia o 25
 			break;
 		case 83: if(graczY>=canwys-paleczkaWys){ //klikniecie klawisza S
 			graczY=canwys - paleczkaWys;	
 			graczVY=0;
-		}else graczVY=paleczkaWys/5 //zmina polozenia o 25
+		}else graczVY=paleczkaWys/10 //zmina polozenia o 25
 			break;
 		case 38: if(botY<=0){ // klikniecie strzalki w gore
 			botY=0;
 			botVY=0;
-		}else botVY=-paleczkaWys/5
+		}else botVY=-paleczkaWys/10
 			break;
 		case 40: if(botY>=canwys-paleczkaWys){ // klikniecie strzalki w dół
 				botY=canwys - paleczkaWys;
 				botVY=0;
-		}else botVY=paleczkaWys/5
+		}else botVY=paleczkaWys/10
 			break;
 		}
     
