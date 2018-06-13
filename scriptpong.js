@@ -156,7 +156,7 @@
 	}
 	//warunki przegranej/wygranej
 	function przegrana(){
-		if(pkr==1){
+		if(pkr==10){
 		pkl=0;
 		pkr=0;
 		if (confirm("Gracz z prawej wygrał! \nKliknij OK aby zacząć od nowa\nKliknij ANULUJ aby wrócić na stronę startową ")){
@@ -168,7 +168,7 @@
 			graczY = 200;
 			botY= 200; 	
 		}
-		if(pkl==1){
+		if(pkl==10){
 		pkl=0;
 		pkr=0;
 		if (confirm("Gracz z lewej wygrał! \nKliknij OK aby zacząć od nowa\nKliknij ANULUJ aby wrócić na stronę startową")){
