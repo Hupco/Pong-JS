@@ -157,18 +157,28 @@
 	//warunki przegranej/wygranej
 	function przegrana(){
 		if(pkr==1){
-		alert("Gracz z prawej wygrał! Kliknij aby zacząć od nowa");
+		pkl=0;
 		pkr=0;
-		graczY = 200;
-		botY= 200; 
-		
+		if (confirm("Gracz z prawej wygrał! \nKliknij OK aby zacząć od nowa\nKliknij ANULUJ aby wrócić na stronę startową ")){
+			graczY = 200;
+			botY= 200; 
+			} else {
+				location.href="start.html";
+				}
+			graczY = 200;
+			botY= 200; 	
 		}
 		if(pkl==1){
-		alert("Gracz z lewej wygrał! Kliknij aby zacząć od nowa");
 		pkl=0;
-		graczY = 200;
-		botY= 200; 
+		pkr=0;
+		if (confirm("Gracz z lewej wygrał! \nKliknij OK aby zacząć od nowa\nKliknij ANULUJ aby wrócić na stronę startową")){
+			graczY = 200;
+			botY= 200; 
+			} else {
+				location.href="start.html";
+			}
 		}
+		punkty.innerText=pkl+"||"+pkr;
 	}
 	
 	/*
