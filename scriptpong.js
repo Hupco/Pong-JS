@@ -39,13 +39,17 @@
 	let ballVY = Math.floor(Math.random() * 2 -1);
 	if(ballVX==0){ballVX+=1;}
 	if(ballVY==0){ballVY+=1;}
+	let graczVY=0;
+	let botVY=0;
 	function gracz(){
 	ctx.fillStyle="red";
 	ctx.fillRect(graczX,graczY,paleczkaSzer,paleczkaWys); //rysowanie lewej paletki
+	graczY+=graczVY;
 	}
 	function bot(){
 	ctx.fillStyle='#0000ff';
 	ctx.fillRect(botX,botY,paleczkaSzer,paleczkaWys); //rysowanie prawej paletki
+	botY+=botVY;
 	}
 	function ball(){ //rysowanie pilki
 	ctx.fillStyle="white";
@@ -95,8 +99,80 @@
 		}
 	}
 	topCanvas= canvas.offsetTop; //odleglosc canvasa od gory strony
+	pressedKeys = [];
+$(document.body).keydown(function (evt) {
+    var li = pressedKeys[evt.keyCode];
+    if (!li) {
+        pressedKeys[evt.keyCode] = li;
+		console.log(evt.keyCode);
+		}
+		switch(evt.keyCode){
+		case 87: if(graczY<=0){ //klikniecie klawisza W
+			graczY=0;
+			graczVY=0;		
+		}else graczVY-=25 //zmina polozenia o 25
+			break;
+		case 83: if(graczY>=canwys-paleczkaWys){ //klikniecie klawisza S
+			graczY=canwys -paleczkaWys;	
+			graczVY=0;
+		}else graczVY+=25 //zmina polozenia o 25
+			break;
+		case 38: if(botY<=0){ // klikniecie strzalki w gore
+			botY=0;
+			botVY=0;
+		}else botVY-=25
+			break;
+		case 40: if(botY>=canwys-paleczkaWys){ // klikniecie strzalki w dół
+				botY=canwys -paleczkaWys;
+				botVY=0;
+		}else botVY+=25
+			break;
+		}
+    
+   
+});
+$(document.body).keyup(function (evt) {
+    var li = pressedKeys[evt.keyCode];
+    if (!li) {
+        pressedKeys[evt.keyCode] = li;
+		console.log(evt.keyCode);
+		}
+		switch(evt.keyCode){
+		case 87: if(graczY<=0){ //klikniecie klawisza W
+			graczY=0;
+			graczVY=0;			
+		}else graczVY=0 //zmina polozenia o 25
+			break;
+		case 83: if(graczY>=canwys-paleczkaWys){ //klikniecie klawisza S
+			graczY=canwys -paleczkaWys;	
+			graczVY=0;
+		}else graczVY=0 //zmina polozenia o 25
+			break;
+		case 38: if(botY<=0){ // klikniecie strzalki w gore
+			botY=0;
+			botVY=0;
+		}else botVY=0
+			break;
+		case 40: if(botY>=canwys-paleczkaWys){ // klikniecie strzalki w dół
+					botY=canwys -paleczkaWys;
+					botVY=0;
+		}else botVY=0
+			break;
+		}
+    
+   
+});
+/*
+$(document.body).keyup(function (evt) {
+    var li = pressedKeys[evt.keyCode];
+    if (!li) {
+       li = log.appendChild(document.createElement('li'));
+    }
+    $(li).text('Up: ' + evt.keyCode);
+    $(li).addClass('key-up');
+});
 	//console.log(topCanvas)
-	function pozycjaGracza(p){
+	/*function pozycjaGracza(p){
 	//console.log(p.keyCode);
 		switch(p.keyCode){
 		case 87: if(graczY<=0){ //klikniecie klawisza W
@@ -108,6 +184,7 @@
 		}else graczY+=25 //zmina polozenia o 25
 			break;
 		}
+	*/
 	/*
 	//Wersja z myszką
 	//console.log("pozycja myszy"+(p.clientY-topCanvas)+"||"+(p.clientY))
@@ -122,8 +199,9 @@
 		}
 
 	//botY=graczY //TEST
-	*/
+	*//*
 	}
+	
 	//2 gracz
 	function pozycjaBota(e){
 	//console.log(e.keyCode);
@@ -138,6 +216,7 @@
 			break;
 		}
 	}
+	*/
 	//Funkcja  dodając przsypieszenie przy odbiciach
 	function acceleration(){
 		//console.log("przyspiesza" + "||"+Math.abs(ballVX)) //sprawdzanie przysp
@@ -164,7 +243,7 @@
 			graczY = 200;//ustawaianie startowej pozycji pałeczek
 			botY= 200; //ustawaianie startowej pozycji pałeczek
 			} else {
-				location.href="start.html"; //przekierowanie na strone startową
+				location.href="index.html"; //przekierowanie na strone startową
 				}
 			graczY = 200;//ustawaianie startowej pozycji pałeczek
 			botY= 200; 	//ustawaianie startowej pozycji pałeczek
@@ -177,7 +256,7 @@
 			graczY = 200;//ustawaianie startowej pozycji pałeczek
 			botY= 200; //ustawaianie startowej pozycji pałeczek
 			} else {
-				location.href="start.html"; //przekierwoanie na strone startową
+				location.href="index.html"; //przekierwoanie na strone startową
 			}
 		}
 		punkty.innerText=pkl+"||"+pkr; //zerowanie licznika  na stronie
@@ -189,8 +268,8 @@
 	canvas.addEventListener("mousemove",pozycjaGracza)
 	*/
 	//ruch klawiszami
-	window.addEventListener("keydown",pozycjaBota)
-	window.addEventListener("keydown",pozycjaGracza)
+	//window.addEventListener("keydown",pozycjaBota)
+	//window.addEventListener("keydown",pozycjaGracza)
 	function rysuj(){
 	table(); //zamalowywuje  na czarno
 	ball(); //tworzy pilke
