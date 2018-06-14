@@ -90,16 +90,17 @@
 	                    if(ballVX==0){ballVX+=1;}
 	                    if(ballVY==0){ballVY+=1;}
 						}
-						
+						sound();//funkcja z efektami
 						przegrana();//wywoałeni funkcji sprwadzajacej czy gracz przegrał
 	}
 	//dodatkowe efekty dzwiekowe
-	
+	function sound(pkl,pkr){
 	if((pkr==4 && pkl==0 )||(pkl==4 && pkr==0) ) {fatality.play()}
 		else if(pkr==4 ||pkl==4){finish.play();}
 				if((pkr==5 && pkl==0 )||(pkl==5 && pkr==0 )){
 					excellent.play();
-		}
+				}
+	}
 	function table(){
 		//Stół
 		ctx.fillStyle = 'black'; //zmiana koloru
