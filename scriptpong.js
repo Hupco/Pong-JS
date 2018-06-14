@@ -180,26 +180,12 @@ $(document.body).keyup(function (evt) { //fukcja  uruchamian przy puszczeniu kal
 		if(pkr==5){ //warunek maksymalnej liczby punktów
 		pkl=0;//zerowanie wyniku
 		pkr=0;//zerowanie wyniku
-		//wyswietlanie okna dialogowego
-		if (confirm("Gracz z prawej wygrał! \nKliknij OK aby zacząć od nowa\nKliknij Anuluj aby wrócić na stronę startową ")){
-			graczY = 200;//ustawaianie startowej pozycji pałeczek
-			botY= 200; //ustawaianie startowej pozycji pałeczek
-			} else {
-				location.href="index.html"; //przekierowanie na strone startową
-				}
-			graczY = 200;//ustawaianie startowej pozycji pałeczek
-			botY= 200; 	//ustawaianie startowej pozycji pałeczek
+		location.href="end.html"; //przekierowanie na strone końcową
 		}
 		if(pkl==5){ //warunek maksymalnej liczby punktów
 		pkl=0;//zerowanie wyniku
 		pkr=0;//zerowanie wyniku
-		//wyswietlanie okna dialogowego
-		if (confirm("Gracz z lewej wygrał! \nKliknij OK aby zacząć od nowa\nKliknij Anuluj aby wrócić na stronę startową")){
-			graczY = 200;//ustawaianie startowej pozycji pałeczek
-			botY= 200; //ustawaianie startowej pozycji pałeczek
-			} else {
-				location.href="index.html"; //przekierwoanie na strone startową
-			}
+		location.href="endl.html"; //przekierowanie na strone końcową
 		}
 		punkty.innerText=pkl+"||"+pkr; //zerowanie licznika  na stronie
 	}
