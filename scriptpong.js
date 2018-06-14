@@ -73,6 +73,7 @@
 		acceleration()
 		}else if(bX<graczX+paleczkaSzer){ //warunek  zdobycia punktu gracza po lewej stronie
 				pkr+=1;
+				if(pkr==4 ||pkl==4) {finish.play();}
 				punkty.innerText=pkl+"||"+pkr; //rysowanie licznika i ponowne ustawienie pilki na start(środek canvasa)
 				bX=canszer/2-ballS/2;
 				bY=canwys/2-ballS/2;
@@ -82,6 +83,7 @@
 	            if(ballVY==0){ballVY+=1;}
 				}else if(bX +ballS>botX){//warunek  zdobycia punktu gracza po prawej stronie
 						pkl+=1;
+						if(pkr==4 ||pkl==4) {finish.play();}
 						punkty.innerText=pkl+"||"+pkr;//rysowanie licznika i ponowne ustawienie pilki na start(środek canvasa)
 						bX=canszer/2-ballS/2;
 						bY=canwys/2-ballS/2;
@@ -90,17 +92,10 @@
 	                    if(ballVX==0){ballVX+=1;}
 	                    if(ballVY==0){ballVY+=1;}
 						}
-						sound();//funkcja z efektami
+						
 						przegrana();//wywoałeni funkcji sprwadzajacej czy gracz przegrał
 	}
-	//dodatkowe efekty dzwiekowe
-	function sound(pkl,pkr){
-	if((pkr==4 && pkl==0 )||(pkl==4 && pkr==0) ) {fatality.play()}
-		else if(pkr==4 ||pkl==4){finish.play();}
-				if((pkr==5 && pkl==0 )||(pkl==5 && pkr==0 )){
-					excellent.play();
-				}
-	}
+	
 	function table(){
 		//Stół
 		ctx.fillStyle = 'black'; //zmiana koloru
