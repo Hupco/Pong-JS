@@ -2,6 +2,12 @@
 	//audio
 	const punch = new Audio();
 	punch.src = "PUNCH.mp3"
+	const finish = new Audio();
+	finish.src = "finishhim.mp3"
+	const excellent = new Audio();
+	excellent.src = "excellent.mp3"
+	const fatality = new Audio();
+	fatality.src = "mkfatality.mp3"
 	//punkty
 	let pkl = 0;
 	let pkr = 0;
@@ -84,8 +90,16 @@
 	                    if(ballVX==0){ballVX+=1;}
 	                    if(ballVY==0){ballVY+=1;}
 						}
+						
 						przegrana();//wywoałeni funkcji sprwadzajacej czy gracz przegrał
 	}
+	//dodatkowe efekty dzwiekowe
+	
+	if((pkr==4 && pkl==0 )||(pkl==4 && pkr==0) ) {fatality.play()}
+		else if(pkr==4 ||pkl==4){finish.play();}
+				if((pkr==5 && pkl==0 )||(pkl==5 && pkr==0 )){
+					excellent.play();
+		}
 	function table(){
 		//Stół
 		ctx.fillStyle = 'black'; //zmiana koloru
