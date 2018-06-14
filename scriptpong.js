@@ -162,22 +162,22 @@ $(document.body).keyup(function (evt) { //fukcja  uruchamian przy puszczeniu kal
 	//Funkcja  dodając przsypieszenie przy odbiciach
 	function acceleration(){
 		//console.log("przyspiesza" + "||"+Math.abs(ballVX)) //sprawdzanie przysp
-		if(ballVX > 0 && ballVX <6){  //maxymalne przyspieszenie 6
+		if(ballVX > 0 && ballVX <10){  //maxymalne przyspieszenie 10
 		ballVX +=0.4; //przyspieszenie co krok 0.4
 		}
-		else if(ballVX < 0 && ballVX >-6){
+		else if(ballVX < 0 && ballVX >-10){
 			ballVX -=0.4;
 			}
-		if(ballVY > 0 && ballVY <6){
+		if(ballVY > 0 && ballVY <10){
 		ballVY +=0.4;
 		}
-		else if(ballVY < 0 && ballVY >-6){
+		else if(ballVY < 0 && ballVY >-10){
 			ballVY -=0.4;
 			}
 	}
 	//warunki przegranej/wygranej
 	function przegrana(){
-		if(pkr==10){ //warunek maksymalnej liczby punktów
+		if(pkr==5){ //warunek maksymalnej liczby punktów
 		pkl=0;//zerowanie wyniku
 		pkr=0;//zerowanie wyniku
 		//wyswietlanie okna dialogowego
@@ -190,7 +190,7 @@ $(document.body).keyup(function (evt) { //fukcja  uruchamian przy puszczeniu kal
 			graczY = 200;//ustawaianie startowej pozycji pałeczek
 			botY= 200; 	//ustawaianie startowej pozycji pałeczek
 		}
-		if(pkl==10){ //warunek maksymalnej liczby punktów
+		if(pkl==5){ //warunek maksymalnej liczby punktów
 		pkl=0;//zerowanie wyniku
 		pkr=0;//zerowanie wyniku
 		//wyswietlanie okna dialogowego
