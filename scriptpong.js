@@ -4,10 +4,6 @@
 	punch.src = "PUNCH.mp3"
 	const finish = new Audio();
 	finish.src = "finishhim.mp3"
-	const excellent = new Audio();
-	excellent.src = "excellent.mp3"
-	const fatality = new Audio();
-	fatality.src = "mkfatality.mp3"
 	//punkty
 	let pkl = 0;
 	let pkr = 0;
