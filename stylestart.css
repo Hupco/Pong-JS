@@ -15,8 +15,8 @@
 	text-align:center;
 	display:block;
 	margin: auto;
-	color:red;
-	text-shadow: 2px 2px 2px white;
+	color:black;
+	text-shadow: 4px 2px 2px white;
 	}
 	h2{
 	color:red;
@@ -30,12 +30,22 @@
 	margin: auto;
 	}
 	#button{
-	border: 2px solid red;
-    border-radius: 50px 20px;
+	border: 2px  solid red;
+    border-radius: 20px 20px ;
 	background-color: black;
 	text-align:center;
-	display:block;
+	display:inline;
 	margin: auto;
+	margin-right:20px;
 	color:red;
-	text-shadow: 2px 2px 2px 2px white;
+	text-shadow: 2px 2px 2px  white;
+	width:100px;
+	height:70px;
+	font-size:20;
 	}
+	#buttony{
+	text-align:center;
+	margin-: auto;
+	float:left;
+	}
+	
