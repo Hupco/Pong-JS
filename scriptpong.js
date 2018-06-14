@@ -162,17 +162,17 @@ $(document.body).keyup(function (evt) { //fukcja  uruchamian przy puszczeniu kal
 	//Funkcja  dodając przsypieszenie przy odbiciach
 	function acceleration(){
 		//console.log("przyspiesza" + "||"+Math.abs(ballVX)) //sprawdzanie przysp
-		if(ballVX > 0 && ballVX <10){  //maxymalne przyspieszenie 10
-		ballVX +=0.4; //przyspieszenie co krok 0.4
+		if(ballVX > 0 && ballVX <15){  //maxymalne przyspieszenie 10
+		ballVX +=0.5; //przyspieszenie co krok 0.4
 		}
-		else if(ballVX < 0 && ballVX >-10){
-			ballVX -=0.4;
+		else if(ballVX < 0 && ballVX >-15){
+			ballVX -=0.5;
 			}
-		if(ballVY > 0 && ballVY <10){
-		ballVY +=0.4;
+		if(ballVY > 0 && ballVY <15){
+		ballVY +=0.5;
 		}
-		else if(ballVY < 0 && ballVY >-10){
-			ballVY -=0.4;
+		else if(ballVY < 0 && ballVY >-15){
+			ballVY -=0.5;
 			}
 	}
 	//warunki przegranej/wygranej
