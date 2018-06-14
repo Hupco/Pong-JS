@@ -2,9 +2,6 @@
 	//audio
 	const punch = new Audio();
 	punch.src = "PUNCH.mp3"
-	
-	
-	
 	//punkty
 	let pkl = 0;
 	let pkr = 0;
@@ -39,6 +36,7 @@
 	let ballVY = Math.floor(Math.random() * 2 -1);
 	if(ballVX==0){ballVX+=1;}
 	if(ballVY==0){ballVY+=1;}
+	//prędkość przesuwania paletek
 	let graczVY=0;
 	let botVY=0;
 	function gracz(){
@@ -99,8 +97,9 @@
 		}
 	}
 	topCanvas= canvas.offsetTop; //odleglosc canvasa od gory strony
-	pressedKeys = [];
-$(document.body).keydown(function (evt) {
+	pressedKeys = []; //tablica kliknietych klawiszy
+	//poruszanie paletkami
+$(document.body).keydown(function (evt) { //fukcja  uruchamian przy wcisienitych kaliwszach
     var li = pressedKeys[evt.keyCode];
     if (!li) {
         pressedKeys[evt.keyCode] = li;
@@ -128,32 +127,30 @@ $(document.body).keydown(function (evt) {
 		}else botVY=paleczkaWys/10
 			break;
 		}
-    
-   
 });
-$(document.body).keyup(function (evt) {
+$(document.body).keyup(function (evt) { //fukcja  uruchamian przy puszczeniu kaliwszy
     var li = pressedKeys[evt.keyCode];
     if (!li) {
         pressedKeys[evt.keyCode] = li;
 		//console.log(evt.keyCode);
 		}
 		switch(evt.keyCode){
-		case 87: if(graczY<=0){ //klikniecie klawisza W
+		case 87: if(graczY<=0){ //puszczenie klawisza W
 			graczY=0;
 			graczVY=0;			
 		}else graczVY=0 //zmina polozenia o 25
 			break;
-		case 83: if(graczY>=canwys-paleczkaWys){ //klikniecie klawisza S
+		case 83: if(graczY>=canwys-paleczkaWys){ //puszczenie klawisza S
 			graczY=canwys -paleczkaWys;	
 			graczVY=0;
 		}else graczVY=0 //zmina polozenia o 25
 			break;
-		case 38: if(botY<=0){ // klikniecie strzalki w gore
+		case 38: if(botY<=0){ // puszczenie strzalki w gore
 			botY=0;
 			botVY=0;
 		}else botVY=0
 			break;
-		case 40: if(botY>=canwys-paleczkaWys){ // klikniecie strzalki w dół
+		case 40: if(botY>=canwys-paleczkaWys){ // puszczenie strzalki w dół
 					botY=canwys -paleczkaWys;
 					botVY=0;
 		}else botVY=0
@@ -162,61 +159,6 @@ $(document.body).keyup(function (evt) {
     
    
 });
-/*
-$(document.body).keyup(function (evt) {
-    var li = pressedKeys[evt.keyCode];
-    if (!li) {
-       li = log.appendChild(document.createElement('li'));
-    }
-    $(li).text('Up: ' + evt.keyCode);
-    $(li).addClass('key-up');
-});
-	//console.log(topCanvas)
-	/*function pozycjaGracza(p){
-	//console.log(p.keyCode);
-		switch(p.keyCode){
-		case 87: if(graczY<=0){ //klikniecie klawisza W
-			graczY=0;		
-		}else graczY-=25 //zmina polozenia o 25
-			break;
-		case 83: if(graczY>=canwys-paleczkaWys){ //klikniecie klawisza S
-			graczY=canwys -paleczkaWys;	
-		}else graczY+=25 //zmina polozenia o 25
-			break;
-		}
-	*/
-	/*
-	//Wersja z myszką
-	//console.log("pozycja myszy"+(p.clientY-topCanvas)+"||"+(p.clientY))
-	graczY = p.clientY-topCanvas -paleczkaWys/2;
-	
-	//ograniczenia
-	if(graczY>=canwys-paleczkaWys){
-		graczY=canwys -paleczkaWys;
-		}
-	if(graczY<=0){
-		graczY=0;
-		}
-
-	//botY=graczY //TEST
-	*//*
-	}
-	
-	//2 gracz
-	function pozycjaBota(e){
-	//console.log(e.keyCode);
-		switch(e.keyCode){
-		case 38: if(botY<=0){ // klikniecie strzalki w gore
-			botY=0;
-		}else botY-=25
-			break;
-		case 40: if(botY>=canwys-paleczkaWys){ // klikniecie strzalki w dół
-					botY=canwys -paleczkaWys;
-		}else botY+=25
-			break;
-		}
-	}
-	*/
 	//Funkcja  dodając przsypieszenie przy odbiciach
 	function acceleration(){
 		//console.log("przyspiesza" + "||"+Math.abs(ballVX)) //sprawdzanie przysp
@@ -261,15 +203,6 @@ $(document.body).keyup(function (evt) {
 		}
 		punkty.innerText=pkl+"||"+pkr; //zerowanie licznika  na stronie
 	}
-	
-	/*
-	//dla myszki
-	//nasluchiwanie zdarzenia (ruchu myszką)
-	canvas.addEventListener("mousemove",pozycjaGracza)
-	*/
-	//ruch klawiszami
-	//window.addEventListener("keydown",pozycjaBota)
-	//window.addEventListener("keydown",pozycjaGracza)
 	function rysuj(){
 	table(); //zamalowywuje  na czarno
 	ball(); //tworzy pilke
